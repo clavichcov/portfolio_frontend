@@ -7,7 +7,7 @@ export function Experience() {
     const { t } = useLanguage();
     const [openIndex, setOpenIndex] = useState(null);
     const [popup, setPopup] = useState(null);
-    const documents = {title: '', children:<Documents onDocuments={handleDocuments}/>}
+    const documents = {children:<Documents />}
     
     const toggleExperience = (index) => {
         if (openIndex === index) {
@@ -16,9 +16,7 @@ export function Experience() {
             setOpenIndex(index);
         }
     };
-    function handleDocuments() {
-
-    }
+    
     function handleOpenPopup(popup) {
         setPopup(popup);
     }
@@ -129,14 +127,14 @@ export function Experience() {
                     className='download__button'
                     onClick={()=>handleOpenPopup(documents)}
                 >
-                    Hoja de vida, anexos y proyectos
+                    {t('experience.button')}
                 </button>
             </section>
             {popup && (
-                    <Popup onClose={handleClosePopup} >
-                        {popup.children}
-                    </Popup>
-                )}
+                <Popup onClose={handleClosePopup} popupType="documents">
+                    {popup.children}
+                </Popup>
+            )}
         </>
         
         

@@ -9,24 +9,38 @@
     left: 0;
     z-index: 1000;
 }
-.popup__content{
-    padding-top: calc(47px + clamp(8px, 2vw, 20px));
-    height: 80%;
-    width: clamp(90%, 5vw, 80%);
-    
+
+.popup__content_documents {
+    display: flex;
+    width: clamp(90%, 5vw, 80%);   
+}
+.popup__content_contact {
+    display: flex;
+    width: clamp(300px, 40vw, 550px);
+            
 }
 .popup__container {
+    width: 100%;
+    padding-top: calc(40px + clamp(8px, 2vw, 15px));
+}
+
+.popup__documents{
     display: flex;
-    background: #ffffff;
-    border-radius: 10px;
-    color: #000000;
-    overflow: hidden;
+    width: 100%;
+    overflow: hidden;  
+}
+
+.popup__contact{
+    display: flex;
+    width: 90%;
+    max-width: 450px;
+    
 }
 
 .popup__close_button {
     padding: 0;
+    margin: 10px 10px 0 0;
     position: absolute;
-    top: clamp(8px, 2vw, 20px);
     right: clamp(8px, 2vw, 20px);
     background-color: rgba(0, 0, 0, 0);
     height: 40px;

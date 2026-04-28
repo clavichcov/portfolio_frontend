@@ -7,6 +7,7 @@
 }
 .footer__content {
     display: flex;
+    padding-top: 1.5rem;
     flex-direction: row;
     justify-content: space-between;
     gap: clamp(1rem, 3vw, 2rem);
@@ -39,4 +40,21 @@
 .footer__social_icon {
     width: clamp(30px, 5vw, 50px);
     height: clamp(30px, 5vw, 50px);
+}
+.form__title {
+    margin: 0;
+}
+.form__button {
+    margin-top: 20px;
+    width: 250px;
+    padding: 1rem;
+    border: none;
+    background: #111827;
+    color: #ffffff;
+    border-radius: 15px;
+}
+.form__button:hover {
+    background: #6f7277;
+    color: #ffffff;
+    cursor: pointer;
 }

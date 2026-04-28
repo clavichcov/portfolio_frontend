@@ -90,6 +90,12 @@ export const translations = {
         'experience3.line1': 'Dirección de empresa de servicios tecnológicos',
         'experience3.line2': 'Gestión de clientes y supervisión de personal',
         'experience3.line3': 'Facturación electrónica DIAN, SiiGO, Alegra',
+        'experience.button': 'Mi CV, certificados y proyectos',
+
+        // Documents
+        'documents.cv': 'Mi CV',
+        'documents.certificates': 'Mis certificados',
+        'documents.projects': 'Proyectos',
         
         // About
         'about.title': 'Sobre mí',
@@ -102,6 +108,8 @@ export const translations = {
         'footer.email': 'Email:',
         'footer.whatsapp': 'WhatsApp:',
         'footer.phone': 'Llamadas:',
+        'form.title':'¿Hablamos de tu proyecto',
+        'form.button': '📝 Contáctame',
   
     },
     en: {
@@ -195,6 +203,12 @@ export const translations = {
         'experience3.line1': 'Management of a technology services company',
         'experience3.line2': 'Client relationship management and technical team supervision',
         'experience3.line3': 'Electronic invoicing (DIAN), SiiGO, Alegra',
+        'experience.button': 'My CV, Certificates and Projects',
+
+        // Documents
+        'documents.cv': 'My CV',
+        'documents.certificates': 'My certificates',
+        'documents.projects': 'Projects',
         
         // About
         'about.title': 'About Me',
@@ -207,6 +221,8 @@ export const translations = {
         'footer.email': 'Email:',
         'footer.whatsapp': 'WhatsApp:',
         'footer.phone': 'Calls:',
+        'form.title':'Shall we talk about your project?',
+        'form.button': '📝 Contact me',
     },
     ru: {
         //Header
@@ -300,6 +316,11 @@ export const translations = {
         'experience3.line1': 'Управление компанией в сфере технологических услуг',
         'experience3.line2': 'Взаимодействие с клиентами и контроль работы технического персонала',
         'experience3.line3': 'Электронное выставление счетов (DIAN), SiiGO, Alegra',
+        'experience.button': 'Мое резюме, сертификаты и проекты',
+
+        'documents.cv': 'Мое резюме',
+        'documents.certificates': 'Мои сертификаты',
+        'documents.projects': 'Проекты',
         
         // About
         'about.title': 'Обо мне',
@@ -312,5 +333,7 @@ export const translations = {
         'footer.email': 'Email:',
         'footer.whatsapp': 'WhatsApp:',
         'footer.phone': 'Звонки:',
+        'form.title':'Поговорим о вашем проекте?',
+        'form.button': '📝 Связаться со мной',
     }
 }

@@ -1,13 +1,36 @@
 import './Footer.css';
+import { useState } from 'react';
+import { Popup } from '../Main/Popup/Popup.jsx'
+import { Contact } from '../Main/Popup/Contact/Contact.jsx'
 import { useLanguage } from '../Contexts/LanguageContext';
 import {IMAGES, LINKS} from '../../Utils/Constants.js'
 
 export function Footer() {
     const { t } = useLanguage();
-
+    const contact = {children:<Contact />}
+    const [popup, setPopup] = useState(null);
+    
+    function handleOpenPopup(popup) {
+        setPopup(popup);
+    }
+    function handleClosePopup() {
+    setPopup(null);
+    }
     return(
         <footer className='footer' id='contact'>
+            <div className='footer__form'>
+                    <h3 className='form__title'>
+                        {t('form.title')}
+                    </h3>
+                    <button 
+                        className='form__button'
+                        onClick={()=>handleOpenPopup(contact)}
+                    >
+                        {t('form.button')}
+                    </button>
+                </div>
             <div className='footer__content'>
+                
                 <div className='footer__content_contact'>
                     <h3 className='footer__contact_title'>
                         {t('footer.contact')}
@@ -43,6 +66,11 @@ export function Footer() {
                     &copy; 2026 Alexander Artemiev
                 </p>
             </div>
+            {popup && (
+               <Popup onClose={handleClosePopup} popupType="contact" >
+                    {popup.children}
+                </Popup>
+            )}
         </footer>
     )
 

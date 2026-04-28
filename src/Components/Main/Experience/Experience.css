@@ -114,7 +114,7 @@
 
 .experience__details {
     padding: 1rem;
-    background: #1f2937;
+    background: #1e293b;
     border-left: 3px solid #3b82f6;
     border-radius: 8px;
     color: #d1d5db;
@@ -138,6 +138,7 @@
 .download__button:hover {
     background: #6f7277;
     color: #ffffff;
+    cursor: pointer;
 }
 
 @media (max-width: 680px) {

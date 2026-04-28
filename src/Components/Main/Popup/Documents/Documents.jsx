@@ -1,10 +1,11 @@
 import './Documents.css'
 import { Cv } from './CV/Cv.jsx'
-import { Certifies } from './Certifies/Certifies.jsx';
+import { Certificates } from './Certificates/Certificates.jsx';
+import { useLanguage } from '../../../Contexts/LanguageContext.jsx'
 import { useState } from 'react';
 export function Documents() {
   const [openTabs , setOpenTabs] = useState(1);
-  
+  const { t } = useLanguage();
   
   function handleToggleTabs (type){
     if(openTabs==type){
@@ -17,31 +18,34 @@ export function Documents() {
   return (
     <>
       <div className='documents'>
-          <div className='tabs'>
-            <div 
-              className={openTabs === 1 ? 'tabs__cv_active':'tabs__cv'}
-              onClick={()=>handleToggleTabs(1)}
-              >
-                Mi CV
-            </div>
-            <div 
-              className={openTabs === 2 ? 'tabs__certifies_active':'tabs__certifies'}
-              onClick={()=>handleToggleTabs(2)}
-            >
-              Mis Certificados
-            </div>
-            <div 
-              className={openTabs === 3 ? 'tabs__projects_active':'tabs__projects'}
-              onClick={()=>handleToggleTabs(3)}
-              >
-                Proyectos
+          <div className='document__tabs'>
+            <div className='document__tabs_content'>
+              <div 
+                className={openTabs === 1 ? 'tabs__cv_active':'tabs__cv'}
+                onClick={()=>handleToggleTabs(1)}
+                >
+                  {t('documents.cv')}
               </div>
+              <div 
+                className={openTabs === 2 ? 'tabs__certificates_active':'tabs__certificates'}
+                onClick={()=>handleToggleTabs(2)}
+              >
+                {t('documents.certificates')}
+              </div>
+              <div 
+                className={openTabs === 3 ? 'tabs__projects_active':'tabs__projects'}
+                onClick={()=>handleToggleTabs(3)}
+                >
+                  {t('documents.projects')}
+                </div>
+            </div>
+              
           </div>
           {openTabs === 1 && (
             <Cv />
           )}
           {openTabs === 2 && (
-            <Certifies />
+            <Certificates />
           )} 
       </div>
     </>

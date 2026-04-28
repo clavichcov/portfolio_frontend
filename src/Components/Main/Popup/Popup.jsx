@@ -3,7 +3,7 @@ import { IMAGES } from '../../../Utils/Constants.js'
 import { useEffect } from 'react';
 
 export function Popup (props) {
-    const {onClose, children} = props;
+    const {onClose, popupType, children} = props;
     
     const handleOverlayClick = (e) => {
         
@@ -11,6 +11,21 @@ export function Popup (props) {
             onClose();
         }
     };
+
+    function handlePopupType(type) {
+        if (type === "documents"){
+            return "popup__content_documents"
+        } else if (type === "contact") {
+            return "popup__content_contact"
+        }
+    }
+    function handleCloseButtonType(type) {
+        if (type === "documents"){
+            return "popup__close_button"
+        } else if (type === "contact") {
+            return "popup__close_button"
+        }
+    }
 
     const handleEscKey = (e) => {
         if (e.key === 'Escape') {
@@ -29,18 +44,19 @@ export function Popup (props) {
     
     return (
         <div className='popup' onClick={handleOverlayClick}>
-            <div className="popup__content">
+            <div className={handlePopupType(popupType)}>
                 <div className='popup__container'>
                     {children}
                 </div>
+                <button
+                    style={{backgroundImage: `url(${IMAGES.close_icon})`}}
+                    aria-label="Close modal"
+                    className={handleCloseButtonType(popupType)}
+                    type="button"
+                    onClick={onClose}
+                />
             </div>
-            <button
-                style={{backgroundImage: `url(${IMAGES.close_icon})`}}
-                aria-label="Close modal"
-                className="popup__close_button"
-                type="button"
-                onClick={onClose}
-            />
+            
         </div>
         
     );
