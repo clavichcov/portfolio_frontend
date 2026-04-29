@@ -54,9 +54,15 @@
 .form__input.error,
 .form__textarea.error,
 .form__select.error {
-    border-color: #dc2626;
+    border-color: #a00c0c;
 }
- 
+.form__input_error{
+    border-color: #a00c0c;
+}
+.form__input_error:focus{
+    border-color: #a00c0c;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
 .form__submit {
     width: 265px;
     padding: 0.85rem;
@@ -67,7 +73,15 @@
 .form__submit:hover {
     background: #2563eb;
 }
-
 .form__submit:active {
     transform: scale(0.98);
+}
+.form__submit:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.form__submit:disabled:hover {
+    background: #9ca3af;
+    transform: none;
 }
