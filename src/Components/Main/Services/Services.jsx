@@ -31,7 +31,7 @@ export function Services() {
         };
         
         loadAllImages();
-    }, []);
+    }, [t]);
 
     return (
         <section className='services' id='services'>

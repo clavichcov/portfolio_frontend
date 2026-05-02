@@ -14,7 +14,7 @@
 }
 .projects__container{
     display: grid;
-    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: clamp(1rem, 2vw, 1.5rem);
     padding-top: 3rem;
 }

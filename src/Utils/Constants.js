@@ -33,6 +33,10 @@ export const PROJECTS_IMAGES = {
         Object.entries(import.meta.glob('../Images/projects/Around/*.{png,jpg,jpeg,svg,gif,webp}'))
             .map(([path, module]) => [path.split('/').pop().split('.')[0], module])
     ),
+    around_api:Object.fromEntries(
+        Object.entries(import.meta.glob('../Images/projects/Around_api/*.{png,jpg,jpeg,svg,gif,webp}'))
+            .map(([path, module]) => [path.split('/').pop().split('.')[0], module])
+    ),
     coffeeshop:Object.fromEntries(
         Object.entries(import.meta.glob('../Images/projects/Coffeeshop/*.{png,jpg,jpeg,svg,gif,webp}'))
             .map(([path, module]) => [path.split('/').pop().split('.')[0], module])
@@ -62,6 +66,8 @@ export const LINKS = {
     discord:"https://discord.com/users/1289590740011450431",
     whatsapp:"https://wa.me/573209637937?text=Hola%20Alexander,%20vi%20tu%20portafolio%20y%20me%20interesan%20tus%20servicios",
     news:"https://news-explorer-frontend-amber.vercel.app/",
-    around:"#",
-    coffeeshop:"#",
+    around:"https://web-project-around-react-beige.vercel.app",
+    around_api:"https://webprojectapifull.vercel.app/signin",
+    coffeeshop:"https://web-project-coffeeshop-chi.vercel.app",
+    homeland:"https://web-project-homeland-zeta.vercel.app",
 }

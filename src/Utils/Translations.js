@@ -100,7 +100,9 @@ export const translations = {
         'projects.title':'Proyectos',
         'projects.news':'Proyecto News Explorer',
         'projects.around':'Proyecto Around the US',
+        'projects.around_api':'Proyecto Around the US con Api',
         'projects.coffeeshop':'Proyecto Coffeeshop',
+        'projects.homeland':'Proyecto Homeland',
         'projects.button':'Mostrar más',
         
         // About
@@ -248,6 +250,14 @@ export const translations = {
         'documents.cv': 'My CV',
         'documents.certificates': 'My certificates',
         'documents.projects': 'Projects',
+
+        // Projects
+        'projects.title':'Projects',
+        'projects.news':'Project News Explorer',
+        'projects.around':'Project Around the US',
+        'projects.coffeeshop':'Project Coffeeshop',
+        'projects.homeland':'Project Homeland',
+        'projects.button':'Show more',
         
         // About
         'about.title': 'About Me',
@@ -395,6 +405,14 @@ export const translations = {
         'documents.cv': 'Мое резюме',
         'documents.certificates': 'Мои сертификаты',
         'documents.projects': 'Проекты',
+
+        // Projects
+        'projects.title':'Проекты',
+        'projects.news':'Проекты News Explorer',
+        'projects.around':'Проекты Around the US',
+        'projects.coffeeshop':'Проекты Coffeeshop',
+        'projects.homeland':'Проекты Homeland',
+        'projects.button':'Show more',
         
         // About
         'about.title': 'Обо мне',

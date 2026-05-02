@@ -8,7 +8,7 @@ import {Card} from '../../Card/Card.jsx'
 export function Projects() {
     const { t } = useLanguage();
     const [cards, setCards]=useState([]);
-    const [visibleCards, setVisibleCards] = useState(3);
+    const [visibleCards, setVisibleCards] = useState(4);
     
     useEffect(() => {
         const loadAllImages = async () => {
@@ -18,19 +18,26 @@ export function Projects() {
             const aroundArray = Object.values(PROJECTS_IMAGES.around || {});
             const aroundModules = await Promise.all(aroundArray.map(fn => fn()));
             const aroundImagesArray = aroundModules.map(m => m.default);
+            const around_apiArray = Object.values(PROJECTS_IMAGES.around_api || {});
+            const around_apiModules = await Promise.all(around_apiArray.map(fn => fn()));
+            const around_apiImagesArray = around_apiModules.map(m => m.default);
             const coffeeshopArray = Object.values(PROJECTS_IMAGES.coffeeshop || {});
             const coffeeshopModules = await Promise.all(coffeeshopArray.map(fn => fn()));
             const coffeeshopImagesArray = coffeeshopModules.map(m => m.default);
+            const homelandArray = Object.values(PROJECTS_IMAGES.homeland || {});
+            const homelandModules = await Promise.all(homelandArray.map(fn => fn()));
+            const homelandImagesArray = homelandModules.map(m => m.default);
             const mockData = [
                 { id: 1, imageModules: newsImagesArray, title: t('projects.news'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
-                { id: 2, imageModules: aroundImagesArray, title: t('projects.around'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
-                { id: 3, imageModules: coffeeshopImagesArray, title: t('projects.coffeeshop'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
-                { id: 4, imageModules: IMAGES.cardimg, title: 'Artículo 4', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
-                { id: 5, imageModules: IMAGES.cardimg, title: 'Artículo 5', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
-                { id: 6, imageModules: IMAGES.cardimg, title: 'Artículo 6', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
-                { id: 7, imageModules: IMAGES.cardimg, title: 'Artículo 7', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
-                { id: 8, imageModules: IMAGES.cardimg, title: 'Artículo 8', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
-                { id: 9, imageModules: IMAGES.cardimg, title: 'Artículo 9', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultriciesnuls nunc eget nisl.`, link:LINKS.news }
+                { id: 2, imageModules: aroundImagesArray, title: t('projects.around'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.around },
+                { id: 3, imageModules: around_apiImagesArray, title: t('projects.around_api'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.around_api },
+                { id: 4, imageModules: coffeeshopImagesArray, title: t('projects.coffeeshop'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
+                { id: 5, imageModules: homelandImagesArray, title: t('projects.homeland'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
+                { id: 6, imageModules: IMAGES.cardimg, title: 'Artículo 5', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
+                { id: 7, imageModules: IMAGES.cardimg, title: 'Artículo 6', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
+                { id: 8, imageModules: IMAGES.cardimg, title: 'Artículo 7', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
+                { id: 9, imageModules: IMAGES.cardimg, title: 'Artículo 8', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
+                { id: 10, imageModules: IMAGES.cardimg, title: 'Artículo 9', description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultriciesnuls nunc eget nisl.`, link:LINKS.news }
                 ];
                 setCards(mockData);
         };
