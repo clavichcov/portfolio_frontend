@@ -17,7 +17,7 @@
     gap: clamp(1rem, 2vw, 1.5rem);
     padding-top: 3rem;
 }
-.container__service {
+.services__card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,17 +26,17 @@
     overflow: hidden;
     color: #e2e8f0;
 }
-.container__service:hover {
+.services__card:hover {
     background: #cbd5e1;
     color: #1e293b
 
 }
-.container__service_image {
+.services__card_image {
     height: clamp(150px, 50vh, 500px);
     object-fit: cover;
     
 }
-.container__service_text {
+.services__card_text {
     
     align-self: center;
 }

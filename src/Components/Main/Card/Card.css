@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    overflow: hidden;
+    color: #e2e8f0;
+    cursor: pointer;
+}
+.card:hover {
+    background: #cbd5e1;
+    color: #1e293b
+
+}
+.card__image {
+    height: clamp(150px, 50vh, 500px);
+    object-fit: cover;
+    
+}
+.card__title {
+    align-self: center;
+}

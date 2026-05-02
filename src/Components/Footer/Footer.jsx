@@ -19,14 +19,14 @@ export function Footer() {
     return(
         <footer className='footer' id='contact'>
             <div className='footer__form'>
-                    <h3 className='form__title'>
-                        {t('form.title')}
+                    <h3 className='footer__contact_title'>
+                        {t('footer.contact-title')}
                     </h3>
                     <button 
-                        className='form__button'
+                        className='footer__contact_button'
                         onClick={()=>handleOpenPopup(contact)}
                     >
-                        {t('form.button')}
+                        {t('footer.contact-button')}
                     </button>
                 </div>
             <div className='footer__content'>

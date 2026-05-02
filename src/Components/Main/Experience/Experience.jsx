@@ -1,4 +1,4 @@
-import './Experience.css'
+import './Experience.css';
 import { useState } from 'react';
 import { useLanguage } from '../../Contexts/LanguageContext.jsx';
 import { Popup } from '../Popup/Popup.jsx';

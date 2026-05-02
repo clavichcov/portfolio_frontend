@@ -1,6 +1,7 @@
 import './Contact.css'
 import { useState, useCallback, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '../../../Contexts/LanguageContext';
 
 export function Contact() {
     const form = useRef();
@@ -19,44 +20,45 @@ export function Contact() {
         message:"",
         submit:""
     });
+    const { t } = useLanguage();
     
     const validateField = useCallback((fieldName, value) => {
     let error = "";
     
     if (!value.trim() && fieldName!="whatsapp") {
-      error = "Este campo es obligatorio";
+      error = t('form.error-0');
     } else if (fieldName === "names") {
       if (value.length < 2) {
-        error = "Este campo debe tener almenos 2 caracteres";
+        error = t('form.error-1');
       } else if (value.length > 100){
-            error = "Este campo no puede tener mas de 100 caracteres";
+            error = t('form.error-2');
         }
     } else if (fieldName === "lastnames") {
       if (value.length < 2) {
-        error = "Este campo debe tener almenos 2 caracteres";
+        error = t('form.error-1');
       } else if (value.length > 100){
-            error = "Este campo no puede tener mas de 100 caracteres";
+            error = t('form.error-2');
         }
     } else if(fieldName === "email"){
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
-            error = "Por favor ingresa un correo electrónico válido";
+            error = t('form.error-3');
         }
     } else if(fieldName === "message"){
         if (value.length < 20) {
-            error = "Este campo debe tener almenos 20 caracteres";
+            error = t('form.error-4');
         } else if (value.length > 1000){
-            error = "Este campo no puede tener mas de 1000 caracteres";
+            error = t('form.error-5');
         }
     }
     if(fieldName === "whatsapp"){
         const whatsappRegex = /^\+?[0-9]+$/;
         if(!whatsappRegex.test(value)){
-            error = "Solo se permiten números y el signo + al inicio";
+            error = t('form.error-6');
         } else if (value.length < 6) {
-            error = "Este campo debe tener almenos 6 caracteres";
+            error = t('form.error-7');
         } else if (value.length > 30){
-            error = "Este campo no puede tener mas de 30 caracteres";
+            error = t('form.error-8');
         }
     }
     return error;
@@ -93,7 +95,7 @@ export function Contact() {
         const messageValid = !validateField("message", message);
         if (!namesValid && !lastnamesValid && !whatsappValid && !emailValid && !messageValid) {
             setErrors(prev => ({ ...prev, 
-                submit: "Hubo errores en los campos, verificalos e intenta nuevamente" 
+                submit: t('form.error-9') 
             }));
             return;
         };
@@ -108,7 +110,7 @@ export function Contact() {
                 form.current,
                 
             );
-            
+            //cambiar a mensaje en popup
             console.log("Email enviado exitosamente!", response);
             
             form.current.reset();
@@ -118,14 +120,14 @@ export function Contact() {
             setEmail("");
             setMessage("");
             setServiceType("4");
-            
-            alert("¡Mensaje enviado con éxito! Te responderé pronto.");
+            //cambiar a mensaje en popup
+            alert(t('form.alert'));
             
         } catch (error) {
-            console.error("Error al enviar el email:", error);
+            console.error(t('form.error-10'), error);
             setErrors(prev => ({
                 ...prev,
-                submit: "Error al enviar el mensaje. Por favor, intenta de nuevo más tarde."
+                submit: t('form.error-11')
             }));
         } finally {
             setIsLoading(false);
@@ -150,9 +152,9 @@ export function Contact() {
             onSubmit={handleSubmit}
             >
                 <div className='form__content'>
-                    <h3 className='form__title'>Contactame</h3>
+                    <h3 className='form__title'>{t('form.title')}</h3>
                     <label className="form__wrapper">
-                        Nombres
+                        {t('form.names')}
                     </label>
                     <input
                         className={`form__input form__input_name ${errors.names ?
@@ -163,14 +165,14 @@ export function Contact() {
                         maxLength="100"
                         minLength="2"
                         name="names-input"
-                        placeholder="Tu Nombre o Nombres"
+                        placeholder={t('form.names-placeholder')}
                         required
                         type="text"
                     />
                     <span className="form__error" id="names-error">{errors.names}</span>
 
                     <label className="form__wrapper">
-                        Apellidos:
+                        {t('form.lastnames')}
                     </label>
                     <input
                         className={`form__input form__input_lastnames ${errors.lastnames ?
@@ -181,14 +183,14 @@ export function Contact() {
                         maxLength="100"
                         minLength="2"
                         name="lastnames-input"
-                        placeholder="Tu apellido o Apellidos"
+                        placeholder={t('form.lastnames-placeholder')}
                         required
                         type="text"
                     />
                     <span className="form__error" id="lastnames-error">{errors.lastnames}</span>
 
                     <label className="form__wrapper">
-                        WhatsApp:
+                        {t('form.whatsapp')}
                     </label>
                     <input
                         className={`form__input form__input_whatsapp ${errors.whatsapp ?
@@ -199,13 +201,13 @@ export function Contact() {
                         maxLength="30"
                         minLength="6"
                         name="whatsapp-input"
-                        placeholder="Ej: +57 320 963 7937"
+                        placeholder={t('form.whatsapp-placeholder')}
                         type="tel"
                     />
                     <span className="form__error" id="whatsapp-error">{errors.whatsapp}</span>
 
                     <label className="form__wrapper">
-                        E-mail:
+                        {t('form.email')}
                     </label>
                     <input
                         className={`form__input form__input_email ${errors.email ?
@@ -216,14 +218,14 @@ export function Contact() {
                         maxLength="60"
                         minLength="5"
                         name="email-input"
-                        placeholder="Ej: tu@email.com"
+                        placeholder={t('form.email-placeholder')}
                         required
                         type="email"
                     />
                     <span className="form__error" id="email-error">{errors.email}</span>
 
                     <label className="form__wrapper">
-                        ¿Qué tipo de servicio necesitas?:
+                        {t('form.select-title')}
                     </label>
                     <select className="form__select"
                         id="servicetype-select"
@@ -231,15 +233,15 @@ export function Contact() {
                         value={serviceType}
                         onChange={handleChange}
                     >
-                        <option className='' value="Desarrollo web">Desarrollo web (Frontend/Backend/Full Stack)</option>
-                        <option className='' value="Soporte TI">Soporte TI / Mantenimiento</option>
-                        <option className='' value="Electricidad">Electricidad (Hogar/Comercial/industrial)</option>
-                        <option className='' value="Consultoría">Consultoría</option>
-                        <option className='' value="Otro">Otro</option>
+                        <option className='' value="Desarrollo web">{t('form.select-line0')}</option>
+                        <option className='' value="Soporte TI">{t('form.select-line1')}</option>
+                        <option className='' value="Electricidad">{t('form.select-line2')}</option>
+                        <option className='' value="Consultoría">{t('form.select-line3')}</option>
+                        <option className='' value="Otro">{t('form.select-line4')}</option>
                     </select>
 
                     <label className="form__wrapper">
-                        Mensaje:
+                       {t('form.message')}
                     </label>
                     <textarea
                         className="form__textarea form__textarea_message"
@@ -251,7 +253,7 @@ export function Contact() {
                         maxLength="1000"
                         minLength="20"
                         name="message-textarea"
-                        placeholder="Cuéntame sobre tu proyecto..."
+                        placeholder={t('form.message-placeholder')}
                         required
                     />
                     <span className="form__error" id="message-error">{errors.message}</span>
@@ -261,7 +263,7 @@ export function Contact() {
                     className="form__submit" 
                     type="submit"
                     disabled={!isFormValid}>
-                       {isLoading ? 'Enviando...' : '📝 Enviar mensaje'} 
+                       {isLoading ? t('form.button-sending') : t('form.button')} 
                     </button>
                 </div>
                 

@@ -41,10 +41,10 @@
     width: clamp(30px, 5vw, 50px);
     height: clamp(30px, 5vw, 50px);
 }
-.form__title {
+.footer__contact_title {
     margin: 0;
 }
-.form__button {
+.footer__contact_button {
     margin-top: 20px;
     width: 250px;
     padding: 1rem;
@@ -53,7 +53,7 @@
     color: #ffffff;
     border-radius: 15px;
 }
-.form__button:hover {
+.footer__contact_button:hover {
     background: #6f7277;
     color: #ffffff;
     cursor: pointer;

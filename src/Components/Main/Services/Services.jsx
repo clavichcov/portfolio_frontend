@@ -1,42 +1,37 @@
 import { useState, useEffect } from "react";
 import './Services.css'
-import {IMAGES, SERVICE_IMAGES} from '../../../Utils/Constants.js'
+import {Card} from '../Card/Card.jsx'
+import {IMAGES, SERVICE_IMAGES, LINKS} from '../../../Utils/Constants.js'
 import { useLanguage } from '../../Contexts/LanguageContext.jsx';
 
 
 export function Services() {
     const { t } = useLanguage();
-    const [electricImages, setElectricImages] = useState([]);
-    const [itSupportImages, setItSupportImages] = useState([]);
-    const [webDeveloperImages, setWebDeveloperImages] = useState([]);
-    const [electricIndex, setElectricIndex] = useState(0);
-    const [itSupportIndex, setItsupportIndex] = useState(0);
-    const [webDeveloperIndex, setWebDeveloperIndex] = useState(0);
-     
+    const [cards, setCards]=useState([]);
+    const [visibleCards, setVisibleCards] = useState(3);
+
     useEffect(() => {
         const loadAllImages = async () => {
             const electricArray = Object.values(SERVICE_IMAGES.electric || {});
             const electricModules = await Promise.all(electricArray.map(fn => fn()));
-            setElectricImages(electricModules.map(m => m.default));
+            const electricImagesArray=electricModules.map(m => m.default);
             const itsupportArray = Object.values(SERVICE_IMAGES.itsupport || {});
             const itsupportModules = await Promise.all(itsupportArray.map(fn => fn()));
-            setItSupportImages(itsupportModules.map(m => m.default));
+            const itsupportImagesArray=itsupportModules.map(m => m.default);
             const webDeveloperArray = Object.values(SERVICE_IMAGES.webdeveloper || {});
             const webDeveloperModules = await Promise.all(webDeveloperArray.map(fn => fn()));
-            setWebDeveloperImages(webDeveloperModules.map(m => m.default));
+            const webDeveloperImagesArray=webDeveloperModules.map(m => m.default);
+            const mockData = [
+                { id: 1, imageModules: electricImagesArray, title: t('services.electric'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
+                { id: 2, imageModules: itsupportImagesArray, title: t('services.it'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news },
+                { id: 3, imageModules: webDeveloperImagesArray, title: t('services.web'), description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nisl, eget ultricies nisl nunc eget nisl.`, link:LINKS.news }
+                
+            ];
+            setCards(mockData);
         };
         
         loadAllImages();
     }, []);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-        setElectricIndex(prev => (prev + 1) % (electricImages.length || 1));
-        setItsupportIndex(prev => (prev + 1) % (itSupportImages.length || 1));
-        setWebDeveloperIndex(prev => (prev + 1) % (itSupportImages.length || 1));
-        }, 5000);
-        return () => clearInterval(interval);
-    }, [electricImages.length, itSupportImages.length]);
 
     return (
         <section className='services' id='services'>
@@ -44,42 +39,10 @@ export function Services() {
                         {t('services.title')}
             </h2>
             <div className='services__container'>
-                <div className='container__service'>
-                    {electricImages.length > 0 && (
-                        <img 
-                            className='container__service_image' 
-                            src={electricImages[electricIndex]} 
-                            alt={t('services.electric')}
-                        />
-                    )}
-                    <p className='container__service_text'>
-                        {t('services.electric')}
-                    </p>
-                </div>
-                <div className='container__service'>
-                    {itSupportImages.length > 0 && (
-                        <img 
-                            className='container__service_image' 
-                            src={itSupportImages[itSupportIndex]} 
-                            alt={t('services.it')}
-                        />
-                    )}
-                    <p className='container__service_text'>
-                        {t('services.it')}
-                    </p>
-                </div>
-                <div className='container__service'>
-                    {webDeveloperImages.length > 0 && (
-                        <img 
-                            className='container__service_image' 
-                            src={webDeveloperImages[webDeveloperIndex]} 
-                            alt={t('services.web')}
-                        />
-                    )}
-                    <p className='container__service_text'>
-                        {t('services.web')}
-                    </p>
-                </div>
+                {cards.slice(0, visibleCards).map(card => (
+                    <Card key={card.id} data={card} />
+                    )
+                )}
             </div>
         </section>
     )
